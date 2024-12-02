@@ -64,32 +64,35 @@
     const giftBox = document.getElementById('gift-box');
     const question = document.getElementById('question');
     
+    // Hayır butonunun sürekli hızlı hareket etmesi için gerekli ayarlar
+    let maxWidth = window.innerWidth - noButton.offsetWidth;
+    let maxHeight = window.innerHeight - noButton.offsetHeight;
     let moveRight = true;
     let moveTop = true;
 
-    // Hayır butonunun hareket etmesini sağla
-    noButton.addEventListener('mouseover', () => {
-      const maxWidth = window.innerWidth - noButton.offsetWidth;
-      const maxHeight = window.innerHeight - noButton.offsetHeight;
-
-      // Random konum oluştur
+    // Hayır butonunun sürekli hareket etmesini sağla
+    setInterval(() => {
       const randomLeft = Math.random() * maxWidth;
       const randomTop = Math.random() * maxHeight;
 
       noButton.style.left = `${randomLeft}px`;
       noButton.style.top = `${randomTop}px`;
-    });
+    }, 50); // 50ms aralıklarla buton hızla yer değiştirecek
 
-    // Evet butonuna tıklandığında 1 saniye sonra "Emin misin kukutelam?" sorusunu göster
+    // Evet butonuna tıklandığında yazıyı değiştir ve 1 saniye sonra sürpriz mesajını göster
     yesButton.addEventListener('click', () => {
       setTimeout(() => {
-        question.textContent = "Emin misin kukutelam?";
-        surprise.style.display = 'block';
-        yesButton.textContent = "Evet, eminim!";
-      }, 1000);
+        question.textContent = "Emin misin kukutelam?"; // Yeni soruyu göster
+      }, 2000); // 2 saniye sonra bu soruyu göster
+
+      // 1 saniye sonra "Bende seni seviyorum bebek götlüm!" mesajı görünür
+      surprise.style.display = 'block';
+      setTimeout(() => {
+        surprise.style.display = 'none'; // 2 saniye sonra mesaj kaybolur
+      }, 2000); // 2000ms = 2 saniye sonra kaybolur
     });
 
-    // Evet, eminim butonuna tıklandığında Youtube linkini yeni sekmede aç
+    // Evet butonuna tıkladığında Youtube linkini yeni sekmede aç
     yesButton.addEventListener('click', function openVideo() {
       window.open('https://www.youtube.com/watch?v=SUrEin4aCR4', '_blank');
     });
@@ -98,21 +101,6 @@
     giftBox.addEventListener('click', () => {
       window.open('https://www.youtube.com/watch?v=SUrEin4aCR4', '_blank');
     });
-
-    // Hayır butonunun hızla hareket etmesi için interval
-    setInterval(() => {
-      const maxWidth = window.innerWidth - noButton.offsetWidth;
-      const maxHeight = window.innerHeight - noButton.offsetHeight;
-
-      if (moveRight) {
-        noButton.style.left = `${Math.random() * maxWidth}px`;
-      } else {
-        noButton.style.top = `${Math.random() * maxHeight}px`;
-      }
-
-      // Hareket yönünü değiştir
-      moveRight = !moveRight;
-    }, 200); // 200ms aralıklarla butonun konumu değişiyor
   </script>
 </body>
 </html>
