@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="title" content="cicikusland">
   <title>cicikusland</title>
   <style>
     body {
@@ -20,7 +21,7 @@
       position: relative;
     }
 
-    .title {
+    h1 {
       font-size: 65px;
       font-weight: bold;
       color: white;
@@ -106,21 +107,17 @@
       animation: rain 1s linear infinite;
     }
 
-    /* Bulutlar animasyonu */
-    @keyframes cloudMove {
-      0% { transform: translateX(-100%); }
-      100% { transform: translateX(100%); }
-    }
-
+    /* Gülümseyen bulutlar için stil */
     .cloud {
       position: absolute;
       top: 10%;
       background-color: #fff;
       border-radius: 50%;
-      width: 100px;
-      height: 60px;
+      width: 120px;
+      height: 80px;
       animation: cloudMove 15s linear infinite;
-      opacity: 0.7;
+      opacity: 0.8;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
     }
 
     .cloud2 {
@@ -128,10 +125,36 @@
       top: 20%;
       background-color: #fff;
       border-radius: 50%;
-      width: 120px;
-      height: 70px;
+      width: 150px;
+      height: 100px;
       animation: cloudMove 20s linear infinite;
-      opacity: 0.5;
+      opacity: 0.7;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+    }
+
+    /* Gülümseme yüzü */
+    .smile {
+      position: absolute;
+      bottom: 10px;
+      left: 20px;
+      width: 60px;
+      height: 30px;
+      border-bottom: 4px solid black;
+      border-radius: 0 0 50% 50%;
+    }
+
+    .eyes {
+      position: absolute;
+      top: 15px;
+      left: 35px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: black;
+    }
+
+    .eyes.left {
+      left: 10px;
     }
 
     /* Güneş */
@@ -162,11 +185,10 @@
       bottom: 20px;
       left: 50%;
       transform: translateX(-50%);
-      width: 100px;
-      height: 70px;
-      background-color: black;
-      border-radius: 50%;
-      box-shadow: 0 0 10px #000;
+      width: 120px;
+      height: 120px;
+      background-image: url('/mnt/data/image.png'); /* İnek resminin yolu */
+      background-size: cover;
     }
 
   </style>
@@ -181,10 +203,26 @@
   <div class="raindrop" style="left: 90%; animation-duration: 1s; animation-delay: 0.3s;"></div>
 
   <!-- Bulutları ekleyelim -->
-  <div class="cloud" style="top: 5%; left: 10%;"></div>
-  <div class="cloud2" style="top: 15%; left: 40%;"></div>
-  <div class="cloud" style="top: 25%; left: 60%;"></div>
-  <div class="cloud2" style="top: 35%; left: 80%;"></div>
+  <div class="cloud" style="top: 5%; left: 10%;">
+    <div class="smile"></div>
+    <div class="eyes left"></div>
+    <div class="eyes"></div>
+  </div>
+  <div class="cloud2" style="top: 20%; left: 40%;">
+    <div class="smile"></div>
+    <div class="eyes left"></div>
+    <div class="eyes"></div>
+  </div>
+  <div class="cloud" style="top: 30%; left: 60%;">
+    <div class="smile"></div>
+    <div class="eyes left"></div>
+    <div class="eyes"></div>
+  </div>
+  <div class="cloud2" style="top: 40%; left: 80%;">
+    <div class="smile"></div>
+    <div class="eyes left"></div>
+    <div class="eyes"></div>
+  </div>
 
   <!-- Güneşi ekleyelim -->
   <div class="sun"></div>
@@ -200,32 +238,4 @@
   </audio>
 
   <div id="text-container">
-    <div class="title" id="solucanText">Solucan olsaydım beni yine de sever miydin?</div>
-  </div>
-
-  <button id="evet">Evet</button>
-  <button id="hayir">Hayır</button>
-
-  <div id="eminMisiniz" class="emin-misin" style="display: none;">
-    Emin misin kukutelam?
-  </div>
-
-  <button id="emin" style="display: none;">Eminim</button>
-
-  <script>
-    const evetButton = document.getElementById("evet");
-    const hayirButton = document.getElementById("hayir");
-    const solucanText = document.getElementById("solucanText");
-    const eminMisiniz = document.getElementById("eminMisiniz");
-    const eminButton = document.getElementById("emin");
-
-    // Hayır butonunun hareketini başlat
-    hayirButton.addEventListener("click", () => {
-      alert("Hayır butonuna tıklanamaz, çünkü o sürekli kaçıyor!");
-    });
-
-    // Evet butonuna tıklandığında yeni metin ve butonlar
-    evetButton.addEventListener("click", () => {
-      solucanText.style.display = "none"; // İlk yazıyı gizle
-      eminMisiniz.style.display = "block"; // "Emin misin kukutelam?" yazısını göster
-      evetButton.style.display = "none"; // Evet butonunu
+    <h1 id="solucanText">Solucan ol
