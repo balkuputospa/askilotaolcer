@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sürpriz Sayfa</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f8f8f8;
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+        }
+        .question {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .yes-btn, .no-btn {
+            font-size: 20px;
+            padding: 10px 20px;
+            cursor: pointer;
+            margin: 10px;
+            border: none;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 5px;
+        }
+        .no-btn {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transition: all 0.1s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="question">Solucan olsaydım beni yinede sever miydin?</div>
+        <button class="yes-btn" onclick="answerYes()">Evet</button>
+        <button class="no-btn" id="noBtn" onclick="answerNo()">Hayır</button>
+    </div>
+
+    <script>
+        let noBtn = document.getElementById('noBtn');
+        
+        // "Evet" butonuna tıklanırsa
+        function answerYes() {
+            alert("Bende seni seviyor bebek götlüm");
+        }
+
+        // "Hayır" butonunu hareket ettir
+        function moveNoButton() {
+            const formWidth = document.body.offsetWidth;
+            const formHeight = document.body.offsetHeight;
+
+            const randomX = Math.random() * (formWidth - 150); // 150px buton genişliği
+            const randomY = Math.random() * (formHeight - 50);  // 50px buton yüksekliği
+
+            noBtn.style.left = randomX + "px";
+            noBtn.style.top = randomY + "px";
+        }
+
+        // "Hayır" butonuna tıklandığında hareket etmeye başlar
+        function answerNo() {
+            moveNoButton();
+        }
+
+        // "Hayır" butonu sürekli hareket etsin
+        setInterval(moveNoButton, 1000); // 1 saniyede bir hareket etsin
+    </script>
+</body>
+</html>
