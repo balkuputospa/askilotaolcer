@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>cicikusland</title>
+  <title>Hayır Butonu Hızlı</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -17,6 +17,7 @@
       justify-content: center;
       align-items: center;
       overflow: hidden;
+      position: relative;
     }
 
     .title {
@@ -69,20 +70,86 @@
     }
 
     #hayir {
-      animation: moveHayir 2s infinite; /* Hayır butonunun hızlı hareketi */
+      animation: moveHayir 0.5s infinite; /* Hayır butonunun hızlı hareketi */
     }
 
     @keyframes moveHayir {
       0% {
-        transform: translate(-50%, -50%) translateX(100px);
+        transform: translate(-50%, -50%) translateX(200px);
+      }
+      25% {
+        transform: translate(-50%, -50%) translateX(-200px);
+      }
+      50% {
+        transform: translate(-50%, -50%) translateX(200px);
+      }
+      75% {
+        transform: translate(-50%, -50%) translateX(-200px);
       }
       100% {
-        transform: translate(-50%, -50%) translateX(-100px);
+        transform: translate(-50%, -50%) translateX(200px);
       }
     }
+
+    /* Yağmur animasyonu */
+    @keyframes rain {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(100vh); }
+    }
+
+    .raindrop {
+      position: absolute;
+      top: -10px;
+      background-color: #8ec8ff;
+      width: 2px;
+      height: 20px;
+      animation: rain 1s linear infinite;
+    }
+
+    /* Bulutlar animasyonu */
+    @keyframes cloudMove {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
+    }
+
+    .cloud {
+      position: absolute;
+      top: 10%;
+      background-color: #fff;
+      border-radius: 50%;
+      width: 100px;
+      height: 60px;
+      animation: cloudMove 15s linear infinite;
+      opacity: 0.7;
+    }
+
+    .cloud2 {
+      position: absolute;
+      top: 20%;
+      background-color: #fff;
+      border-radius: 50%;
+      width: 120px;
+      height: 70px;
+      animation: cloudMove 20s linear infinite;
+      opacity: 0.5;
+    }
+
   </style>
 </head>
 <body>
+
+  <!-- Yağmur damlalarını ekleyelim -->
+  <div class="raindrop" style="left: 10%; animation-duration: 1s; animation-delay: 0s;"></div>
+  <div class="raindrop" style="left: 30%; animation-duration: 1s; animation-delay: 0.5s;"></div>
+  <div class="raindrop" style="left: 50%; animation-duration: 1s; animation-delay: 0.2s;"></div>
+  <div class="raindrop" style="left: 70%; animation-duration: 1s; animation-delay: 0.8s;"></div>
+  <div class="raindrop" style="left: 90%; animation-duration: 1s; animation-delay: 0.3s;"></div>
+
+  <!-- Bulutları ekleyelim -->
+  <div class="cloud" style="top: 5%; left: 10%;"></div>
+  <div class="cloud2" style="top: 15%; left: 40%;"></div>
+  <div class="cloud" style="top: 25%; left: 60%;"></div>
+  <div class="cloud2" style="top: 35%; left: 80%;"></div>
 
   <div id="text-container">
     <div class="title" id="solucanText">Solucan olsaydım beni yine de sever miydin?</div>
