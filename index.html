@@ -238,4 +238,23 @@
   </audio>
 
   <div id="text-container">
-    <h1 id="solucanText">Solucan ol
+    <h1 id="solucanText">Solucan olsaydım beni yine de sever miydin?</h1>
+  </div>
+
+  <button id="evet">Evet</button>
+  <button id="hayir">Hayır</button>
+
+  <div id="eminMisiniz" class="emin-misin" style="display: none;">
+    Emin misiniz?
+  </div>
+
+  <script>
+    // Evet butonuna tıklandığında metni değiştir ve emin misiniz sorusunu göster
+    document.getElementById('evet').addEventListener('click', function() {
+      document.getElementById('solucanText').textContent = "Çok iyi! Solucan olsaydım seni severdim.";
+      document.getElementById('eminMisiniz').style.display = 'block';
+    });
+  </script>
+
+</body>
+</html>
