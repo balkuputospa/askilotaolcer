@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="cicikusland" content="cicikusland">
+  <meta name="title" content="cicikusland">
   <title>cicikusland</title>
   <style>
     body {
@@ -133,17 +133,7 @@
       height: 80px;
       background-color: #90EE90; /* Açık yeşil */
       border-top: 2px solid #4C9E3C; /* Çimen sınırı */
-    }
-
-    .cow {
-      position: absolute;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 120px;
-      height: 120px;
-      background-image: url('/mnt/data/image.png'); /* İnek resminin yolu */
-      background-size: cover;
+    
     }
 
     /* Güneş */
@@ -216,6 +206,7 @@
       // Evet butonuna tıklandığında metin değişecek ve yeni buton görünecek
       document.getElementById('solucanText').innerText = "Emin misin kukuletam?";
       document.getElementById('hayir').style.display = 'none'; // Hayır butonunu gizle
+      document.getElementById('evet').style.display = 'none'; // Evet butonunu gizle
       document.getElementById('emin').style.display = 'inline'; // Eminim butonunu göster
     });
 
