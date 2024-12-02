@@ -253,4 +253,19 @@
   <script>
     document.getElementById('evet').addEventListener('click', function() {
       // Evet butonuna tıklandığında metin değişecek ve yeni buton görünecek
-      document.getElementById('solucan
+      document.getElementById('solucanText').innerText = "Emin misin kukuletam?";
+      document.getElementById('eminMisiniz').style.display = 'block';
+      document.getElementById('hayir').style.display = 'none'; // Hayır butonunu gizle
+      document.getElementById('emin').style.display = 'inline'; // Eminim butonunu göster
+    });
+
+    document.getElementById('emin').addEventListener('click', function() {
+      window.open("https://www.youtube.com/watch?v=SUrEin4aCR4", "_blank");
+    });
+
+    document.getElementById('hayir').addEventListener('click', function() {
+      window.open("https://www.youtube.com/watch?v=QYlzoplheEU", "_blank");
+    });
+  </script>
+</body>
+</html>
