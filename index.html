@@ -248,12 +248,11 @@
     Emin misin kukuletam?
   </div>
 
-  <button id="emin" style="display: none;">Eminim</button>
+  <button id="emin" style="display: none;">Eminim kukuletam</button>
 
   <script>
     document.getElementById('evet').addEventListener('click', function() {
-      document.getElementById('solucanText').textContent = "Çok iyi! Solucan olsaydım seni severdim.";
-      document.getElementById('eminMisiniz').textContent = "Emin misin kukuletam?";
+      document.getElementById('solucanText').textContent = "Emin misin kukuletam?";
       document.getElementById('eminMisiniz').style.display = 'block';
       document.getElementById('hayir').style.display = 'none'; // Hayır butonunu gizle
       document.getElementById('emin').style.display = 'inline'; // Eminim butonunu göster
@@ -264,10 +263,7 @@
     });
 
     document.getElementById('hayir').addEventListener('click', function() {
-      // Hayır butonunun hızla hareket etmesi
-      const directions = ["left", "right", "top", "bottom"];
-      const randomDirection = directions[Math.floor(Math.random() * directions.length)];
-      document.getElementById('hayir').style[randomDirection] = Math.random() * 500 + "px";
+      window.open("https://www.youtube.com/watch?v=QYlzoplheEU", "_blank");
     });
   </script>
 
