@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="title" content="cicikusland">
+  <meta name="cicikusland" content="cicikusland">
   <title>cicikusland</title>
   <style>
     body {
@@ -62,16 +62,9 @@
       color: white;
     }
 
-    /* Emin misin metni */
-    .emin-misin {
-      font-size: 65px;
-      font-weight: bold;
-      color: white;
-      margin-top: 50px;
-    }
-
+    /* Hayır butonunun daha yavaş hareketi */
     #hayir {
-      animation: moveHayir 3s infinite; /* Hayır butonunun daha yavaş hareketi */
+      animation: moveHayir 3s infinite; 
     }
 
     @keyframes moveHayir {
@@ -132,44 +125,6 @@
       box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
     }
 
-    /* Gülümseme yüzü */
-    .smile {
-      position: absolute;
-      bottom: 10px;
-      left: 20px;
-      width: 60px;
-      height: 30px;
-      border-bottom: 4px solid black;
-      border-radius: 0 0 50% 50%;
-    }
-
-    .eyes {
-      position: absolute;
-      top: 15px;
-      left: 35px;
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background-color: black;
-    }
-
-    .eyes.left {
-      left: 10px;
-    }
-
-    /* Güneş */
-    .sun {
-      position: absolute;
-      top: 10%;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 150px;
-      height: 150px;
-      background-color: yellow;
-      border-radius: 50%;
-      box-shadow: 0 0 50px rgba(255, 255, 0, 0.5);
-    }
-
     /* Çimenler ve İnek */
     .grass {
       position: absolute;
@@ -191,6 +146,18 @@
       background-size: cover;
     }
 
+    /* Güneş */
+    .sun {
+      position: absolute;
+      top: 10%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 150px;
+      height: 150px;
+      background-color: yellow;
+      border-radius: 50%;
+      box-shadow: 0 0 50px rgba(255, 255, 0, 0.5);
+    }
   </style>
 </head>
 <body>
@@ -231,12 +198,6 @@
   <div class="grass"></div>
   <div class="cow"></div>
 
-  <!-- Yağmur sesi ekleyelim -->
-  <audio id="rain-sound" autoplay loop>
-    <source src="rain-sound.mp3" type="audio/mp3"> <!-- Buraya ses dosyanızın yolunu yazın -->
-    Your browser does not support the audio element.
-  </audio>
-
   <div id="text-container">
     <h1 id="solucanText">Solucan olsaydım beni yine de sever miydin?</h1>
   </div>
@@ -245,7 +206,7 @@
   <button id="hayir">Hayır</button>
 
   <div id="eminMisiniz" class="emin-misin" style="display: none;">
-    Emin misin kukuletam?
+    <!-- Bu yazı artık gizlendi -->
   </div>
 
   <button id="emin" style="display: none;">Eminim kukuletam</button>
@@ -254,7 +215,6 @@
     document.getElementById('evet').addEventListener('click', function() {
       // Evet butonuna tıklandığında metin değişecek ve yeni buton görünecek
       document.getElementById('solucanText').innerText = "Emin misin kukuletam?";
-      document.getElementById('eminMisiniz').style.display = 'block';
       document.getElementById('hayir').style.display = 'none'; // Hayır butonunu gizle
       document.getElementById('emin').style.display = 'inline'; // Eminim butonunu göster
     });
