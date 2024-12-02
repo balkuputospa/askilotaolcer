@@ -10,6 +10,9 @@
       text-align: center;
       margin-top: 100px;
       background-color: #f1f1f1;
+      position: relative;
+      height: 100vh;
+      overflow: hidden; /* Butonlar sayfadan çıkmasın */
     }
     #question {
       font-size: 24px;
@@ -20,6 +23,7 @@
       padding: 10px 20px;
       font-size: 18px;
       cursor: pointer;
+      position: absolute;
       transition: all 0.2s ease-in-out;
     }
     #yes-button {
@@ -29,10 +33,6 @@
     #no-button {
       background-color: #f44336;
       color: white;
-    }
-    #no-button.move {
-      position: absolute;
-      transition: all 0.05s linear;
     }
     #surprise {
       display: none;
@@ -63,14 +63,21 @@
     const surprise = document.getElementById('surprise');
     const giftBox = document.getElementById('gift-box');
     const question = document.getElementById('question');
-    let moveRight = true;
     
+    let moveRight = true;
+    let moveTop = true;
+
     // Hayır butonunun hareket etmesini sağla
     noButton.addEventListener('mouseover', () => {
-      if (moveRight) {
-        noButton.style.left = `${Math.random() * (window.innerWidth - 200)}px`;
-        noButton.style.top = `${Math.random() * (window.innerHeight - 100)}px`;
-      }
+      const maxWidth = window.innerWidth - noButton.offsetWidth;
+      const maxHeight = window.innerHeight - noButton.offsetHeight;
+
+      // Random konum oluştur
+      const randomLeft = Math.random() * maxWidth;
+      const randomTop = Math.random() * maxHeight;
+
+      noButton.style.left = `${randomLeft}px`;
+      noButton.style.top = `${randomTop}px`;
     });
 
     // Evet butonuna tıklandığında 1 saniye sonra "Emin misin kukutelam?" sorusunu göster
@@ -83,10 +90,8 @@
     });
 
     // Evet, eminim butonuna tıklandığında Youtube linkini yeni sekmede aç
-    yesButton.addEventListener('click', () => {
-      yesButton.addEventListener('click', function openVideo() {
-        window.open('https://www.youtube.com/watch?v=SUrEin4aCR4', '_blank');
-      });
+    yesButton.addEventListener('click', function openVideo() {
+      window.open('https://www.youtube.com/watch?v=SUrEin4aCR4', '_blank');
     });
 
     // Hediye kutusuna tıklama fonksiyonu
@@ -94,10 +99,20 @@
       window.open('https://www.youtube.com/watch?v=SUrEin4aCR4', '_blank');
     });
 
-    // Hayır butonunun hareketini hızlandır
+    // Hayır butonunun hızla hareket etmesi için interval
     setInterval(() => {
+      const maxWidth = window.innerWidth - noButton.offsetWidth;
+      const maxHeight = window.innerHeight - noButton.offsetHeight;
+
+      if (moveRight) {
+        noButton.style.left = `${Math.random() * maxWidth}px`;
+      } else {
+        noButton.style.top = `${Math.random() * maxHeight}px`;
+      }
+
+      // Hareket yönünü değiştir
       moveRight = !moveRight;
-    }, 200); // 200ms'lik bir hızla, hayır butonunun yerini değiştiriyoruz
+    }, 200); // 200ms aralıklarla butonun konumu değişiyor
   </script>
 </body>
 </html>
