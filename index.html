@@ -3,76 +3,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sürpriz Sayfa</title>
+    <title>Sürpriz!</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #f8f8f8;
-            margin: 0;
-        }
-        .container {
             text-align: center;
+            margin-top: 50px;
         }
-        .question {
-            font-size: 24px;
-            margin-bottom: 20px;
-        }
-        .yes-btn, .no-btn {
-            font-size: 20px;
-            padding: 10px 20px;
+        button {
+            padding: 15px 30px;
+            font-size: 18px;
             cursor: pointer;
-            margin: 10px;
-            border: none;
-            background-color: #4CAF50;
-            color: white;
-            border-radius: 5px;
         }
-        .no-btn {
-            position: absolute;
-            left: 50%;
-            top: 50%;
+        #noButton {
+            position: relative;
             transition: all 0.1s ease-in-out;
+        }
+        #surpriseBox {
+            display: none;
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+            font-size: 18px;
+            text-align: center;
+            border-radius: 10px;
+        }
+        #loveMessage {
+            display: none;
+            font-size: 24px;
+            color: #e83e8c;
+            font-weight: bold;
+            margin-top: 30px;
+        }
+        #giftBox {
+            display: none;
+            background: url('https://image.shutterstock.com/image-vector/illustration-open-gift-box-260nw-1381023199.jpg') no-repeat center center;
+            background-size: contain;
+            width: 150px;
+            height: 150px;
+            margin-top: 20px;
+            cursor: pointer;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="question">Solucan olsaydım beni yinede sever miydin?</div>
-        <button class="yes-btn" onclick="answerYes()">Evet</button>
-        <button class="no-btn" id="noBtn" onclick="answerNo()">Hayır</button>
+    <h1>Solucan olsaydım beni yinede sever miydin?</h1>
+    <button id="yesButton">Evet</button>
+    <button id="noButton">Hayır</button>
+
+    <div id="loveMessage">
+        <p>Bende seni seviyorum bebek götlüm! 💖</p>
+    </div>
+    
+    <div id="giftBox"></div>
+
+    <div id="surpriseBox">
+        <p>🎉 Sürpriz! 🎉</p>
+        <p><a href="https://www.youtube.com/watch?v=SUrEin4aCR4" target="_blank">Beni izlemek için tıklayın!</a></p>
     </div>
 
     <script>
-        let noBtn = document.getElementById('noBtn');
-        
-        // "Evet" butonuna tıklanırsa
-        function answerYes() {
-            alert("Bende seni seviyor bebek götlüm");
-        }
+        // Hayır butonunun hareketini hızlandırma
+        var noButton = document.getElementById("noButton");
+        var moveSpeed = 20; // Hız arttırıldı, daha hızlı hareket edecek
 
-        // "Hayır" butonunu hareket ettir
-        function moveNoButton() {
-            const formWidth = document.body.offsetWidth;
-            const formHeight = document.body.offsetHeight;
+        noButton.addEventListener("mouseover", function() {
+            var randomX = Math.floor(Math.random() * window.innerWidth);
+            var randomY = Math.floor(Math.random() * window.innerHeight);
+            noButton.style.position = "absolute";
+            noButton.style.left = randomX + "px";
+            noButton.style.top = randomY + "px";
+        });
 
-            const randomX = Math.random() * (formWidth - 150); // 150px buton genişliği
-            const randomY = Math.random() * (formHeight - 50);  // 50px buton yüksekliği
+        // Evet butonuna tıklandığında sürpriz kutusunu gösterme
+        var yesButton = document.getElementById("yesButton");
+        var loveMessage = document.getElementById("loveMessage");
+        var giftBox = document.getElementById("giftBox");
+        var surpriseBox = document.getElementById("surpriseBox");
 
-            noBtn.style.left = randomX + "px";
-            noBtn.style.top = randomY + "px";
-        }
+        yesButton.addEventListener("click", function() {
+            loveMessage.style.display = "block"; // "Bende seni seviyorum bebek götlüm" yazısını göster
+            giftBox.style.display = "block"; // Hediye kutusunu göster
+        });
 
-        // "Hayır" butonuna tıklandığında hareket etmeye başlar
-        function answerNo() {
-            moveNoButton();
-        }
-
-        // "Hayır" butonu sürekli hareket etsin
-        setInterval(moveNoButton, 1000); // 1 saniyede bir hareket etsin
+        // Hediye kutusuna tıklandığında YouTube linkini aç
+        giftBox.addEventListener("click", function() {
+            window.open("https://www.youtube.com/watch?v=SUrEin4aCR4", "_blank");
+        });
     </script>
 </body>
 </html>
