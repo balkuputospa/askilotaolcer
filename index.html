@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hayır Butonu Hızlı</title>
+  <title>cicikusland</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -70,24 +70,24 @@
     }
 
     #hayir {
-      animation: moveHayir 0.5s infinite; /* Hayır butonunun hızlı hareketi */
+      animation: moveHayir 1s infinite; /* Hayır butonunun hızlı hareketi */
     }
 
     @keyframes moveHayir {
       0% {
-        transform: translate(-50%, -50%) translateX(200px);
+        transform: translate(-50%, -50%) translateX(200px) translateY(0) rotate(0deg);
       }
       25% {
-        transform: translate(-50%, -50%) translateX(-200px);
+        transform: translate(-50%, -50%) translateX(-200px) translateY(200px) rotate(90deg);
       }
       50% {
-        transform: translate(-50%, -50%) translateX(200px);
+        transform: translate(-50%, -50%) translateX(0) translateY(-200px) rotate(180deg);
       }
       75% {
-        transform: translate(-50%, -50%) translateX(-200px);
+        transform: translate(-50%, -50%) translateX(200px) translateY(200px) rotate(270deg);
       }
       100% {
-        transform: translate(-50%, -50%) translateX(200px);
+        transform: translate(-50%, -50%) translateX(-200px) translateY(0) rotate(360deg);
       }
     }
 
@@ -134,6 +134,41 @@
       opacity: 0.5;
     }
 
+    /* Güneş */
+    .sun {
+      position: absolute;
+      top: 10%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 150px;
+      height: 150px;
+      background-color: yellow;
+      border-radius: 50%;
+      box-shadow: 0 0 50px rgba(255, 255, 0, 0.5);
+    }
+
+    /* Çimenler ve İnek */
+    .grass {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 80px;
+      background-color: #90EE90; /* Açık yeşil */
+      border-top: 2px solid #4C9E3C; /* Çimen sınırı */
+    }
+
+    .cow {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 70px;
+      background-color: black;
+      border-radius: 50%;
+      box-shadow: 0 0 10px #000;
+    }
+
   </style>
 </head>
 <body>
@@ -150,6 +185,19 @@
   <div class="cloud2" style="top: 15%; left: 40%;"></div>
   <div class="cloud" style="top: 25%; left: 60%;"></div>
   <div class="cloud2" style="top: 35%; left: 80%;"></div>
+
+  <!-- Güneşi ekleyelim -->
+  <div class="sun"></div>
+
+  <!-- Çimenler ve İnek -->
+  <div class="grass"></div>
+  <div class="cow"></div>
+
+  <!-- Yağmur sesi ekleyelim -->
+  <audio id="rain-sound" autoplay loop>
+    <source src="rain-sound.mp3" type="audio/mp3"> <!-- Buraya ses dosyanızın yolunu yazın -->
+    Your browser does not support the audio element.
+  </audio>
 
   <div id="text-container">
     <div class="title" id="solucanText">Solucan olsaydım beni yine de sever miydin?</div>
@@ -180,15 +228,4 @@
     evetButton.addEventListener("click", () => {
       solucanText.style.display = "none"; // İlk yazıyı gizle
       eminMisiniz.style.display = "block"; // "Emin misin kukutelam?" yazısını göster
-      evetButton.style.display = "none"; // Evet butonunu gizle
-      hayirButton.style.display = "none"; // Hayır butonunu gizle
-      eminButton.style.display = "block"; // "Eminim" butonunu göster
-    });
-
-    // Eminim butonuna tıklayınca yeni sekmede YouTube linki aç
-    eminButton.addEventListener("click", () => {
-      window.open("https://www.youtube.com/watch?v=SUrEin4aCR4", "_blank");
-    });
-  </script>
-</body>
-</html>
+      evetButton.style.display = "none"; // Evet butonunu
